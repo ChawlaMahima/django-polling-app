@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1>{{a.que_text}}</h1> 
+
+<ul>
+	{% for i in a.choice_set.all%}
+		 
+		 <li>{{i.choice_text}} -----{{i.votes}} vote{{ i.votes|pluralize }}</li>  
+	{%endfor%}
+</ul>
+
+<a href='/polls/{{a.id}}'>Vote Again<?a> 
+
+</body>
+</html>	

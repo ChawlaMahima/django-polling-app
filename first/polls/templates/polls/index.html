@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body>
+{% if latest_qu %}
+	<ul>	
+	{% for q in latest_qu %}
+		
+		<li><a href ='/polls/{{q.id}}'><b>{{q.que_text}}</b></a></li> 
+		
+	{% endfor %}
+	</ul>
+			
+{% else %}
+	<b>No Latest Questions Found.</b>
+{% endif %}	
+
+
+</body>
+</html>

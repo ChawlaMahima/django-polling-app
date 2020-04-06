@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+<body>
+<h1>{{a.que_text}}</h1>
+<form action='/polls/{{a.id}}/vote/' method="post">
+<!-- csrf token is passed for any post form to make sure data isnt stolen -->
+{% csrf_token%}
+{% for i in a.choice_set.all%}
+        <!-- for loop.counter returns the iteration number of for loop -->
+	<input type="radio" name="choice" id="i{{ forloop.counter }}"  value="{{i.id}}"/>
+	<label for="i{{forloop.counter}}">{{i.choice_text}}<br></label>
+{% endfor %}
+	<br>
+	 <input type="submit" value="vote"/><br></br>
+<ul>
+<!-- {% for i in a.choice_set.all %} -->
+
+	<!-- <li>{{i.choice_text}}</li> -->
+<!-- {% endfor %} -->
+</ul>
+</body>
+</html>
